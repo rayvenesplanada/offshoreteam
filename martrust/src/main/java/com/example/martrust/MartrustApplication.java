@@ -10,20 +10,18 @@ import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.client.RestTemplate;
 
-import java.time.Duration;
-
 @SpringBootApplication
 @EnableAutoConfiguration(exclude = {DataSourceAutoConfiguration.class, DataSourceTransactionManagerAutoConfiguration.class, HibernateJpaAutoConfiguration.class})
 public class MartrustApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(MartrustApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(MartrustApplication.class, args);
+    }
 
-	@Bean
-	public RestTemplate restTemplate(RestTemplateBuilder builder) {
-		return builder
-				.build();
-	}
+    @Bean
+    public RestTemplate restTemplate(RestTemplateBuilder builder) {
+        return builder
+                .build();
+    }
 
 }

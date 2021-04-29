@@ -125,3 +125,7 @@ The demo project provides an API for a ForEx widget that accepts 2 different cur
 
             For context, this means that if you want to sell `5000` PHP to convert to USD, you would get `103.34` USD in return.
 
+### Unit Tests
+
+For this project, only the service layer is covered 100% in the unit tests. Covering the controller with unit tests would be redundant since the two controllers only have 1 line inside of them and both are calls to the service layer.
+

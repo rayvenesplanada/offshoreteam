@@ -18,12 +18,11 @@ import javax.xml.bind.ValidationException;
 import java.util.HashMap;
 import java.util.Map;
 
-import static org.mockito.ArgumentMatchers.any;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 import static org.mockito.ArgumentMatchers.contains;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.when;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.assertEquals;
 
 @ExtendWith(MockitoExtension.class)
 @RunWith(MockitoJUnitRunner.class)
@@ -55,6 +54,7 @@ public class CurrencyExchangeServiceTest {
     CurrencyExchangeDTO EXCHANGE_DTO = CurrencyExchangeDTO.builder()
             .success(true)
             .build();
+
     @Before
     public void setUp() {
 
@@ -90,7 +90,7 @@ public class CurrencyExchangeServiceTest {
     }
 
     @Test
-    public void test_getExchangeConversion_ok() throws Exception{
+    public void test_getExchangeConversion_ok() throws Exception {
         EXCHANGE_DTO = CurrencyExchangeDTO.builder()
                 .buyCurrency("USD")
                 .buyAmount(1)
@@ -106,14 +106,14 @@ public class CurrencyExchangeServiceTest {
 
         currencyExchangeService.getExchangeConversion(EXCHANGE_DTO);
 
-        assertEquals(Math.round(EXCHANGE_DTO.getBuyAmount() * 100.0 ) / 100.0, 42.30, 2);
+        assertEquals(Math.round(EXCHANGE_DTO.getBuyAmount() * 100.0) / 100.0, 42.30, 2);
     }
 
     @Test
-    public void test_getExchangeConversion_validationError () throws Exception {
+    public void test_getExchangeConversion_invalidCurrency() throws Exception {
         EXCHANGE_DTO = CurrencyExchangeDTO.builder()
                 .buyCurrency("NON_EXISTENT_CURRENCY")
-                .buyAmount(1)
+                .buyAmount(1.0)
                 .sellCurrency("PHP")
                 .build();
 
@@ -121,10 +121,17 @@ public class CurrencyExchangeServiceTest {
         expectedEx.expectMessage("Buy/Sell currency is null or does not exist within the database.");
 
         currencyExchangeService.getExchangeConversion(EXCHANGE_DTO);
+    }
 
-        EXCHANGE_DTO.setBuyCurrency("USD");
-        EXCHANGE_DTO.setBuyAmount(-1.0);
+    @Test
+    public void test_getExchangeConversion_invalidAmount() throws Exception {
+        EXCHANGE_DTO = CurrencyExchangeDTO.builder()
+                .buyCurrency("USD")
+                .sellCurrency("PHP")
+                .sellAmount(-1.0)
+                .build();
 
+        expectedEx.expect(ValidationException.class);
         expectedEx.expectMessage("Negative numbers are not allowed in this transaction.");
         currencyExchangeService.getExchangeConversion(EXCHANGE_DTO);
     }
