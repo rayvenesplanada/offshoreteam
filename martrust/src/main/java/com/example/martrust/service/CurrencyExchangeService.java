@@ -50,15 +50,14 @@ public class CurrencyExchangeService {
         Map<String, Double> rates = Optional.ofNullable(restTemplate.getForObject(getPath, CurrencyExchangeDTO.class).getRates())
                 .orElseThrow(() -> new RuntimeException("Error in retrieving from API."));
 
-
-        exchangeDTO.setBaseConversionAmount(computeConversionAmount(rates.get(exchangeDTO.getBuyCurrency()),
-                rates.get(exchangeDTO.getSellCurrency())));
-
-        exchangeDTO.setRates(rates);
+        exchangeDTO.setBaseConversionAmount(computeConversionAmount(rates.get(exchangeDTO.getSellCurrency()),
+                rates.get(exchangeDTO.getBuyCurrency())));
+        exchangeDTO.setSuccess(true);
 
         if (exchangeDTO.getBuyAmount() > 0) {
             exchangeDTO.setSellAmount(exchangeDTO.getBuyAmount() * exchangeDTO.getBaseConversionAmount());
         } else {
+
             exchangeDTO.setBuyAmount(exchangeDTO.getSellAmount() / exchangeDTO.getBaseConversionAmount());
         }
 
