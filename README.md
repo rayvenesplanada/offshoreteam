@@ -124,7 +124,7 @@ The demo project provides an API for a Forex widget that accepts 2 different cur
               "buyAmount": 241919.9252509168,
               "sellCurrency": "PHP",
               "sellAmount": 5000,
-              "baseConversionAmount": 0.020667995804041574
+              "baseConversionAmount": 48.38398505018336
             }
             ```
 
