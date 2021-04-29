@@ -54,7 +54,7 @@ The demo project provides an API for a Forex widget that accepts 2 different cur
 
     3.  Run the project by right clicking the main application class `MartrustApplication` and clicking `Run`.
 
-    4.  Once the application has ran successfully, go to your preferred browser and check if the `/symbols` endpoint is working by putting in `http://localhost:8080/api/v1/currency_exchange` in the address bar. This is the `GET` endpoint to retrieve the map of the currency acronyms to their values.
+    4.  Once the application has run successfully, go to your preferred browser and check if the `/symbols` endpoint is working by putting in `http://localhost:8080/api/v1/currency_exchange` in the address bar. This is the `GET` endpoint to retrieve the map of the currency acronyms to their values.
 
         You will be greeted with something a map of 168 currencies:
 
