@@ -35,7 +35,12 @@ The demo project provides an API for a ForEx widget that accepts 2 different cur
 
 ## How to Run the Project
 
-1.  Clone the project from the Github repository in your desired directory (https://github.com/rayvenesplanada/offshoreteam):
+1.  The repository link is https://github.com/rayvenesplanada/offshoreteam. Here's the SSH public key for the repository:
+
+    `pub
+    SHA256:9ew5ER4KlcnYM6M79LaOU3/ghViuwb8bZS7mmceETUE`
+
+2.  Clone the project from the Github repository in your desired directory:
 
     ```terminal
     git clone https://github.com/rayvenesplanada/offshoreteam.git
