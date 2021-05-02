@@ -1,5 +1,5 @@
 # Foreign Exchange Calculator
-The demo project provides an API for a Forex widget that accepts 2 different currencies and exchanges them to the corresponding buying or selling rate depending on the given input. The exchange rates are provided via external API provided by https://exchangeratesapi.io/ (Although some constraints that will be explained later regarding this).
+The demo project provides an API for a Forex widget that accepts 2 different currencies and exchanges them to the corresponding buying or selling rate depending on the given input. The exchange rates are provided via external API by https://exchangeratesapi.io/ (Although with some constraints that will be explained later regarding this).
 
 ### Requirements
 
